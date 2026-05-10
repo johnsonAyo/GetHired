@@ -446,7 +446,6 @@ export const OnboardingForm: React.FC = () => {
           error instanceof Error ? error.message : String(error)
         }`,
       );
-    } finally {
       setIsLoading(false);
     }
   };

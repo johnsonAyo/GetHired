@@ -296,7 +296,7 @@ export const buildQuery = async ({
       limit &&
       relevanceSearchType !== "standard" &&
       relevanceSearchType !== "job_digest" &&
-      relevanceSearchType === "job_digest_with_suggestions"
+      relevanceSearchType !== "job_digest_with_suggestions"
     ) {
       query = query.limit(limit);
     }

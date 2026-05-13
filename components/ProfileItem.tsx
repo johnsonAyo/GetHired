@@ -5,7 +5,6 @@ import { cn } from "@/utils/utils";
 import { Dot, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-// import { IFormData } from "@/utils/types";
 import { Badge } from "./ui/badge";
 import ProfileFavoriteStar from "./ProfileFavoriteStar";
 import ProgressBtn from "./ProgressBtn";

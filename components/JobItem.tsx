@@ -7,7 +7,6 @@ import { cn } from "@/utils/utils";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
 import JobFavoriteBtn from "./JobFavoriteBtn";
 import JobApplyBtn from "./JobApplyBtn";
-import ModifiedLink from "./ModifiedLink";
 import React from "react";
 import { AllJobWithRelations } from "@/utils/types";
 
@@ -28,75 +27,64 @@ const JobItem = React.memo(
     isOnboardingComplete: boolean;
   }) => {
     return (
-      <>
-        <ModifiedLink
-          href={`/jobs/${job.id}`}
-          target="_blank"
-          className="text-start"
-          style={{
-            contentVisibility: "auto",
-          }}
-        >
-          <div
-            className={cn(
-              "flex flex-col gap-3 p-4 group  rounded-lg transition hover:bg-secondary ",
-            )}
-          >
-            <div className=" flex-col sm:flex-row sm:flex items-center justify-between gap-4">
-              <div className="flex-1 flex flex-col gap-2 mb-6 sm:mb-0">
-                <div className="flex flex-col ">
-                  <div>
-                    <Link
-                      href={`/jobs/${job.id}`}
-                      target="_blank"
-                      className="inline hover:underline underline sm:no-underline underline-offset-2"
-                      onClick={(e) => e.stopPropagation()}
-                      prefetch={false}
-                    >
-                      <h3 className="inline text-lg sm:text-xl font-semibold">
-                        {job.job_name}
-                      </h3>
-                    </Link>
-                    <JobFavoriteBtn
-                      isCompanyUser={isCompanyUser}
-                      user={user}
-                      userFavorites={job.user_favorites}
-                      job_id={job.id}
-                    />
-                  </div>
-                  {job.company_url ? (
-                    <Link
-                      href={job.company_url || ""}
-                      target="_blank"
-                      className="text-muted-foreground hover:underline w-fit underline sm:no-underline underline-offset-2"
-                      onClick={(e) => e.stopPropagation()}
-                      prefetch={false}
-                    >
-                      {job.company_name}
-                    </Link>
-                  ) : (
-                    <p className="text-muted-foreground"> {job.company_name}</p>
-                  )}
-                </div>
-                <JobDetailBadges job={job} isSuitable={isSuitable} />
+      <div
+        className={cn(
+          "flex flex-col gap-3 p-4 group  rounded-lg transition hover:bg-secondary",
+        )}
+      >
+        <div className=" flex-col sm:flex-row sm:flex items-center justify-between gap-4">
+          <div className="flex-1 flex flex-col gap-2 mb-6 sm:mb-0">
+            <div className="flex flex-col ">
+              <div>
+                <Link
+                  href={`/jobs/${job.id}`}
+                  target="_blank"
+                  className="inline hover:underline group-hover:underline underline sm:no-underline underline-offset-[4px]"
+                  onClick={(e) => e.stopPropagation()}
+                  prefetch={false}
+                >
+                  <h3 className="inline text-lg sm:text-xl font-semibold">
+                    {job.job_name}
+                  </h3>
+                </Link>
+                <JobFavoriteBtn
+                  isCompanyUser={isCompanyUser}
+                  user={user}
+                  userFavorites={job.user_favorites}
+                  job_id={job.id}
+                />
               </div>
-              <JobApplyBtn
-                isCompanyUser={isCompanyUser}
-                user={user}
-                job={job}
-                isOnboardingComplete={isOnboardingComplete}
-                isAppliedJobsTabActive={isAppliedJobsTabActive}
-              />
+              {job.company_url ? (
+                <Link
+                  href={job.company_url || ""}
+                  target="_blank"
+                  className="text-muted-foreground hover:underline w-fit underline sm:no-underline underline-offset-2"
+                  onClick={(e) => e.stopPropagation()}
+                  prefetch={false}
+                >
+                  {job.company_name}
+                </Link>
+              ) : (
+                <p className="text-muted-foreground"> {job.company_name}</p>
+              )}
             </div>
-            {job.status === "inactive" && (
-              <div className="flex items-center gap-1 text-muted-foreground text-xs">
-                <InfoCircledIcon />
-                This Job Posting has been deactivated by {job.company_name}
-              </div>
-            )}
+            <JobDetailBadges job={job} isSuitable={isSuitable} />
           </div>
-        </ModifiedLink>
-      </>
+          <JobApplyBtn
+            isCompanyUser={isCompanyUser}
+            user={user}
+            job={job}
+            isOnboardingComplete={isOnboardingComplete}
+            isAppliedJobsTabActive={isAppliedJobsTabActive}
+          />
+        </div>
+        {job.status === "inactive" && (
+          <div className="flex items-center gap-1 text-muted-foreground text-xs">
+            <InfoCircledIcon />
+            This Job Posting has been deactivated by {job.company_name}
+          </div>
+        )}
+      </div>
     );
   },
 );

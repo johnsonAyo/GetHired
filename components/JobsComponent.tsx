@@ -401,26 +401,6 @@ export default function JobsComponent({
       ) : (
         renderedList
       )}
-      {/* 
-      {jobs.length < totalCount && jobs.length !== 0 ? (
-        !isGenerated &&
-        current_page === "jobs" &&
-        isSuitable &&
-        !isSimilarSearch ? (
-          ""
-        ) : current_page === "jobs" && !user && page >= 2 ? (
-          <FootComponent />
-        ) : (
-          <div
-            ref={loaderRef}
-            className="flex justify-center items-center p-4 pt-20"
-          >
-            <AppLoader size="md" />
-          </div>
-        )
-      ) : (
-        ""
-      )} */}
 
       {hasMore && jobs.length !== 0 && !error && (
         <>

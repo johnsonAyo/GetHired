@@ -171,7 +171,7 @@ export default async function JobsPage({
   const params = new URLSearchParams(dynamicKey);
   params.set("tab", activeTab);
   const isRelevantSorting = params.get("sortBy") === "relevance";
-  const isSimilarSearch = isRelevantSorting && params.get("jobId");
+  const isSimilarSearch = !!(isRelevantSorting && params.get("jobId"));
 
   if (isSimilarSearch) {
     params.set("createdAfter", "30");
@@ -233,7 +233,6 @@ export default async function JobsPage({
           {!applicationStatusFilter && (
             <TabsContent value="all">
               <JobsComponent
-                // key={dynamicKey}
                 dynamicKey={dynamicKey}
                 initialJobs={initialJobs || []}
                 user={user}
@@ -254,7 +253,6 @@ export default async function JobsPage({
             !isAISearch && (
               <TabsContent value="saved">
                 <JobsComponent
-                  // key={dynamicKey}
                   dynamicKey={dynamicKey}
                   initialJobs={initialJobs || []}
                   user={user}
@@ -272,7 +270,6 @@ export default async function JobsPage({
           {user && !isCompanyUser && !isAISearch && (
             <TabsContent value="applied">
               <JobsComponent
-                // key={dynamicKey}
                 dynamicKey={dynamicKey}
                 initialJobs={initialJobs || []}
                 user={user}

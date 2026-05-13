@@ -4,17 +4,9 @@ import {
 } from "@/utils/types";
 import { createClient } from "../../lib/supabase/server";
 import { PostgrestError } from "@supabase/supabase-js";
+import { parseMultiSelectParam } from "@/utils/serverUtils";
 
 const userInfoSelectString = `user_id, desired_roles, preferred_locations, min_salary, max_salary, experience_years, industry_preferences, visa_sponsorship_required, top_skills, work_style_preferences, career_goals_short_term, career_goals_long_term, company_size_preference, created_at, updated_at, job_type, ai_credits, filled, full_name, email, salary_currency, is_public`;
-
-const parseMultiSelectParam = (param: string | null | undefined): string[] => {
-  return param
-    ? param
-        .split("|")
-        .map((s) => s.trim())
-        .filter(Boolean)
-    : [];
-};
 
 export async function buildProfileQuery({
   searchQuery,
@@ -96,10 +88,7 @@ export async function buildProfileQuery({
       selectString = `${userInfoSelectString}, company_favorites!inner(company_id)`;
       query = supabase
         .from("user_info")
-        .select(
-          selectString,
-          // { count: "exact" }
-        )
+        .select(selectString)
         .eq("company_favorites.company_id", companyId)
         .eq("filled", true)
         .eq("is_public", true);
@@ -110,7 +99,6 @@ export async function buildProfileQuery({
           `
           ${userInfoSelectString}, company_favorites(*)
         `,
-          // { count: "exact" },
         )
         .eq("filled", true)
         .eq("is_public", true);
@@ -146,13 +134,12 @@ export async function buildProfileQuery({
         "match_user_profiles",
         {
           job_embedding: jobEmbedding,
-          match_threshold: 0.5, // You can adjust this threshold
+          match_threshold: 0.3, // You can adjust this threshold
           match_count: 100, // Fetch a larger set to then apply filters
         },
       );
 
       if (searchError) {
-        // console.error("Vector search error:", searchError);
         throw searchError;
       }
 

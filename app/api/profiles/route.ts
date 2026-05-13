@@ -2,12 +2,10 @@ import { rerankProfilesIfApplicable } from "@/helpers/profiles/ai-rerank-profile
 import { buildProfileQuery } from "@/helpers/profiles/profilesFilterQueryBuilder";
 import { createClient } from "@/lib/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
-// let PROFILES_PER_PAGE = 20;
 
 export async function GET(request: NextRequest) {
   const supabase = await createClient();
   const searchParams = request.nextUrl.searchParams;
-  // const page = parseInt(searchParams.get("page") || "1", 10);
 
   const {
     data: { user },
@@ -39,21 +37,12 @@ export async function GET(request: NextRequest) {
   const workStyle = searchParams.get("workStylePreference");
   const companySize = searchParams.get("companySize");
   const industry = searchParams.get("industryPreference");
-  // const sortBy = searchParams.get("sortBy");
-  // const sortOrder = searchParams.get("sortOrder");
   const sortBy = searchParams.get("sortBy") ?? "created_at";
   const sortOrder = searchParams.get("sortOrder") ?? "desc";
   const isFavoriteTabActive = searchParams.get("tab") === "saved";
   const job_post_id = searchParams.get("job_post");
   const limit = parseInt(searchParams.get("limit") || "20");
   const cursor = searchParams.get("cursor");
-
-  // PROFILES_PER_PAGE = parseInt(
-  //   searchParams.get("limit") || PROFILES_PER_PAGE.toString(),
-  // );
-
-  // const startIndex = (page - 1) * PROFILES_PER_PAGE;
-  // const endIndex = startIndex + PROFILES_PER_PAGE - 1;
   const jobEmbedding =
     companyData.job_postings?.find((job) => job.id === job_post_id)
       ?.embedding_new || null;
@@ -77,8 +66,6 @@ export async function GET(request: NextRequest) {
         sortOrder,
         cursor,
         limit,
-        // start_index: startIndex,
-        // end_index: endIndex,
         isFavoriteTabActive,
         jobEmbedding,
       });
@@ -95,7 +82,6 @@ export async function GET(request: NextRequest) {
       aiCredits: companyData.ai_credits,
       matchedProfileIds,
       isRelevantSearch: sortBy === "relevance" && !!job_post_id,
-      // relevanceSearchType,
       cursor,
       companyId: companyData.id,
     });

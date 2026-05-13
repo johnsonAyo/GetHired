@@ -270,3 +270,14 @@ export const deploymentUrl = () => {
       return "http://localhost:3000";
   }
 };
+
+export const parseMultiSelectParam = <T extends string>(
+  param: string | null | undefined,
+): T[] => {
+  return param
+    ? (param
+        .split("|")
+        .map((s) => s.trim())
+        .filter(Boolean) as T[])
+    : [];
+};

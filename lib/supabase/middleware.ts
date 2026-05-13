@@ -49,6 +49,7 @@ export async function updateSession(request: NextRequest) {
 
   const publicPaths = [
     "/",
+    "/oauth/consent",
     "/jobs",
     "/hire",
     "/ai-resume-checker",

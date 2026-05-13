@@ -106,6 +106,12 @@ export async function rerankProfilesIfApplicable({
 
         finalJobs = reorderedJobs;
         finalCount = reorderedJobs.length;
+
+        // console.log(
+        //   "********FINAL PROFILES START**********",
+        //   finalJobs,
+        //   "*********FINAL PROFILES END**********",
+        // );
       }
     } catch (e) {
       console.error("Error during AI Rerank fetch:", e);

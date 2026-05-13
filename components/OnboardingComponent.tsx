@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  startTransition,
+} from "react";
 import {
   Card,
   CardContent,
@@ -29,6 +35,7 @@ import { Loader2 } from "lucide-react";
 import { updateUserAppMetadata } from "@/app/actions/update-user-metadata";
 import useSWR from "swr";
 import { submitOnboardingAction } from "@/app/actions/submit-onboarding";
+import { useProgress } from "react-transition-progress";
 
 type IFormData = {
   email: string | null;
@@ -102,6 +109,8 @@ export const OnboardingForm: React.FC = () => {
     Partial<Record<keyof IFormData, string>>
   >({});
   const [user, setUser] = useState<User | null>(null);
+  const startProgress = useProgress();
+
   const {
     data: countriesData,
     error: countriesError,
@@ -430,7 +439,10 @@ export const OnboardingForm: React.FC = () => {
 
       toast.success("Profile complete! Welcome to GetHired.", { id: toastId });
 
-      router.push("/jobs");
+      startTransition(() => {
+        startProgress();
+        router.push(`/jobs`);
+      });
     } catch (error) {
       toast.error(
         error instanceof Error

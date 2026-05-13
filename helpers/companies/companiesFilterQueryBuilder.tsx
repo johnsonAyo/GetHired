@@ -1,6 +1,7 @@
 import { TCompanyInfo } from "@/utils/types";
 import { createClient } from "../../lib/supabase/server";
 import { PostgrestError } from "@supabase/supabase-js";
+import { parseMultiSelectParam } from "@/utils/serverUtils";
 export const companiesSelectString = `id, created_at, updated_at, name, industry, description, website, headquarters, company_size, logo_url, tag_line`;
 
 export const buildCompaniesQuery = async ({
@@ -32,17 +33,6 @@ export const buildCompaniesQuery = async ({
     const {
       data: { user },
     } = await supabase.auth.getUser();
-
-    const parseMultiSelectParam = (
-      param: string | null | undefined,
-    ): string[] => {
-      return param
-        ? param
-            .split("|")
-            .map((s) => s.trim())
-            .filter(Boolean)
-        : [];
-    };
 
     let query;
     let selectString;

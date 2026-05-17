@@ -74,7 +74,6 @@ export default function JobDescriptionCard({
 
       setAiSummary(newSummary);
     } catch (error) {
-      console.error("AI Summarization Error:", error);
       toast.error(`Failed to generate summary: ${(error as Error).message}.`);
 
       setIsAISummary(false);

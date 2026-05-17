@@ -6,6 +6,7 @@ import { Label } from "../ui/label";
 import { Loader2 } from "lucide-react";
 import ResumeSourceSelector from "../ResumeSourceSelector";
 import { TResumeReviewResume } from "@/utils/types/review.types";
+import toast from "react-hot-toast";
 
 export const Step6ResumeUpload: React.FC<StepProps> = ({
   formData,
@@ -38,8 +39,8 @@ export const Step6ResumeUpload: React.FC<StepProps> = ({
         if (!error) {
           setExistingResumes(data || []);
         }
-      } catch (err) {
-        console.error("Error fetching resumes:", err);
+      } catch {
+        toast.error("Failed to load your resumes. Please refresh the page.");
       } finally {
         setFetchingResumes(false);
       }

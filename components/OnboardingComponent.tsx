@@ -428,14 +428,10 @@ export const OnboardingForm: React.FC = () => {
         throw new Error(result.error);
       }
 
-      const { error: metaError } = await updateUserAppMetadata(user.id, {
+      await updateUserAppMetadata(user.id, {
         type: "applicant",
         onboarding_complete: true,
       });
-
-      if (metaError) {
-        console.error("Metadata update failed:", metaError);
-      }
 
       toast.success("Profile complete! Welcome to GetHired.", { id: toastId });
 

@@ -130,7 +130,6 @@ export default function SelectProfile({
             </p>,
           );
         } catch {
-          // console.error("Error creating application:", error);
           toast.error("Some error occured. Please try again.");
 
           setSelectedProfiles(selectedProfiles);

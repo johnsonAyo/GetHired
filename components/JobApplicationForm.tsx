@@ -93,8 +93,8 @@ export default function JobApplicationForm({
         if (primary) {
           setSelectedResumeId(primary.id);
         }
-      } catch (err) {
-        console.error("Resume fetch error", err);
+      } catch {
+        toast.error("Failed to load your resumes.");
       } finally {
         setIsFetchingResumes(false);
       }

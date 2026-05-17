@@ -45,8 +45,7 @@ export default function CreateReviewForResume({
           router.push(`/resume-review/${result.reviewId}`);
         });
       }
-    } catch (err) {
-      console.error("[CREATE_REVIEW_CLIENT_ERROR]:", err);
+    } catch {
       toast.error("Failed to initialize review. Please try again.", {
         id: toastId,
       });

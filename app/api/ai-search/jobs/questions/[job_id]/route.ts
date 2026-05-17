@@ -75,7 +75,7 @@ export async function POST(
 
     if (jobFetchError || !jobData || !jobData.description) {
       return NextResponse.json(
-        { error: "Job description not found for context." },
+        { error: "Job description not found for context" },
         { status: 404 },
       );
     }

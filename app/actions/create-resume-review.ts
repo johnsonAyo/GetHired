@@ -25,6 +25,18 @@ export async function createResumeReviewAction(formData: FormData) {
   const userId = user.id;
 
   try {
+    if (jobId) {
+      const { data: jobData } = await supabase
+        .from("all_jobs")
+        .select("description")
+        .eq("id", jobId)
+        .single();
+
+      if (!jobData?.description) {
+        return { error: "Job description not found for the provided job." };
+      }
+    }
+
     const { data: profile } = await supabase
       .from("user_info")
       .select("ai_credits")

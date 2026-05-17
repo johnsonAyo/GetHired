@@ -46,9 +46,8 @@ export default function JdSection({
       if (error) throw error;
       lastSavedJd.current = localJd;
       startTransition(() => router.refresh());
-    } catch (err) {
-      console.error("Auto-save failed:", err);
-      toast.error("Progress not saved.");
+    } catch {
+      toast.error("Some error occured. Progress not saved.");
     } finally {
       setIsSaving(false);
     }

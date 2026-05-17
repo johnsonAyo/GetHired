@@ -267,8 +267,7 @@ export default async function ProfilePage({
         </div>
       </div>
     );
-  } catch (err) {
-    console.error("Error in ApplicantPage:", err);
+  } catch {
     return <ErrorComponent />;
   }
 }

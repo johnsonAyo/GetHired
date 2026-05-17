@@ -55,8 +55,7 @@ export function useInfiniteScroll<T>({
 
       // If the API returns a null cursor, we've reached the end of the list
       setHasMore(!!result.nextCursor);
-    } catch (err) {
-      console.error("[INFINITE_SCROLL_ERROR]:", err);
+    } catch {
     } finally {
       setIsLoading(false);
     }

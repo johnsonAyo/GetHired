@@ -94,8 +94,7 @@ export default function DynamicActions<T extends Item>({
       updateLocalItem(data as unknown as T);
       toast.success(`${entityName} updated successfully`);
       setOpenDialog(false);
-    } catch (err) {
-      console.error(`Update error [${tableName}]:`, err);
+    } catch {
       toast.error(`Error updating ${entityName.toLowerCase()}`);
     } finally {
       setFormLoading(false);
@@ -116,8 +115,7 @@ export default function DynamicActions<T extends Item>({
       removeLocalItem(itemId);
       toast.success(`${entityName} removed successfully`);
       setOpenDialog(false);
-    } catch (err) {
-      console.error(`Delete error [${tableName}]:`, err);
+    } catch {
       toast.error("Could not delete. Please try again later.");
     } finally {
       setDeleteLoading(false);

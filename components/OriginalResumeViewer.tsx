@@ -77,7 +77,6 @@ export default function OriginalResumeViewer({
         }
       } catch (err) {
         if (isCurrent) {
-          console.error("PDF Load Error:", err);
           setDebugError(
             err instanceof Error ? err.message : JSON.stringify(err),
           );

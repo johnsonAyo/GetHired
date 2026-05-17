@@ -317,8 +317,7 @@ export default async function DashboardPage() {
         )}
       </div>
     );
-  } catch (e) {
-    console.error(e);
+  } catch {
     return <ErrorComponent />;
   }
 }

@@ -28,8 +28,7 @@ export async function generateStaticParams() {
       .map((slug) => ({
         location: slug,
       }));
-  } catch (error) {
-    console.error("Static generation fetch failed:", error);
+  } catch {
     return [{ location: "remote" }, { location: "india" }];
   }
 }

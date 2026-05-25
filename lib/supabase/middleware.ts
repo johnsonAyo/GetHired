@@ -85,6 +85,7 @@ export async function updateSession(request: NextRequest) {
     "/oauth/consent",
     "/jobs",
     "/hire",
+    "/mcp-server",
     "/ai-resume-checker",
     "/api/internal/scraper-state",
     "/api/internal/jobs/bulk-upsert",

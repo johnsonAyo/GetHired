@@ -5,6 +5,8 @@ import Footer from "@/components/landing-page/Footer";
 import Hero from "@/components/landing-page/Hero";
 import { HowWeHelp } from "@/components/landing-page/HowWeHelp";
 import TheGetHiredAdvantageSection from "@/components/landing-page/TheGetHiredAdvantageSection";
+import { HIRE_PAGE_DARK } from "@/utils/utils";
+import { HIRE_PAGE_LIGHT } from "@/utils/utils";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,7 +29,14 @@ export default async function HirePage() {
     <main className="min-h-screen flex flex-col items-center">
       <div className="flex-1 w-full flex flex-col gap-20 items-center">
         <div className="flex-1 flex flex-col gap-32  w-full">
-          <Hero />
+          <Hero
+            heading="Smartest Path to the Perfect Candidate"
+            subheading="Find Exceptional candidates, Streamline your screening, and connect Directly with motivated talent"
+            ctaText="Hire Talent"
+            ctaLink="/hire"
+            imgLight={HIRE_PAGE_LIGHT}
+            imgDark={HIRE_PAGE_DARK}
+          />
           <HowWeHelp />
           <AIFeatures />
           <TheGetHiredAdvantageSection />

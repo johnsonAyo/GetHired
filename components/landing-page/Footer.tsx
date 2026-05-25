@@ -189,6 +189,14 @@ export default function Footer() {
             </li>
             <li>
               <Link
+                href="/mcp-server"
+                className="hover:underline hover:opacity-100 transition-opacity"
+              >
+                MCP Server
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/privacy-policy"
                 className="hover:underline hover:opacity-100 transition-opacity"
               >

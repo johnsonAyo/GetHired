@@ -441,3 +441,10 @@ export const HeroMaskStyle = {
   maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
   WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
 };
+
+export const JOB_SEEKER_DARK = "/hero/job-seeker-hero-dark.png";
+export const JOB_SEEKER_LIGHT = "/hero/job-seeker-hero-light.png";
+export const HIRE_PAGE_DARK = "/hero/company-hero-dark.png";
+export const HIRE_PAGE_LIGHT = "/hero/company-hero-light.png";
+export const MCP_SERVER_DARK = "/hero/mcp-server-hero-dark.png";
+export const MCP_SERVER_LIGHT = "/hero/mcp-server-hero-light.png";

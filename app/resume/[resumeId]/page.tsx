@@ -78,7 +78,10 @@ export default async function ResumeIdPage({
                     <p>
                       This feature uses {TAICredits.AI_CV_REVIEW} AI credits per
                       use.{" "}
-                      <Link href={"/dashboard"} className="text-blue-500">
+                      <Link
+                        href={"/dashboard/buy-credits"}
+                        className="text-blue-500"
+                      >
                         Recharge Credits
                       </Link>
                     </p>

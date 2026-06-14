@@ -138,7 +138,7 @@ export default function AskAIDialog({
           <DialogTitle>Ask AI to help you apply for this role</DialogTitle>
           <DialogDescription className="flex items-center gap-1">
             {creditsState} AI Credits available.{" "}
-            <Link href={"/dashboard"} className="text-blue-500">
+            <Link href={"/dashboard/buy-credits"} className="text-blue-500">
               Recharge Credits
             </Link>
             <InfoTooltip

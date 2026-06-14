@@ -64,7 +64,7 @@ export const UploadResumeParent = ({
           </div>
           <Button type="button" variant={"outline"} asChild>
             <Link
-              href={"/dashboard"}
+              href={"/dashboard/buy-credits"}
               className="w-full text-xs font-bold uppercase tracking-widest border-amber-200 dark:border-amber-800"
             >
               Recharge AI Credits

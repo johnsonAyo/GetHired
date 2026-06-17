@@ -1,9 +1,7 @@
 "use server";
 
-import { deploymentUrl } from "@/utils/serverUtils";
+import { deploymentUrl, INTERNAL_API_SECRET } from "@/utils/serverUtils";
 import { createClient } from "@/lib/supabase/server";
-
-const INTERNAL_API_SECRET = process.env.INTERNAL_API_SECRET;
 
 const URL = deploymentUrl();
 
